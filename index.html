@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login con Firebase</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Estilo general en blanco y negro */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      text-align: center;
+      background: #111;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    form {
+      margin-bottom: 20px;
+    }
+
+    input {
+      display: block;
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 10px;
+      border: 1px solid #555;
+      border-radius: 5px;
+      background-color: #222;
+      color: #fff;
+    }
+
+    input::placeholder {
+      color: #aaa;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #444;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #666;
+    }
+
+    a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    #message {
+      color: red;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2 id="form-title">Registro</h2>
+    <form id="register-form" style="display: block;">
+      <input type="email" id="register-email" placeholder="Correo electrónico" required>
+      <input type="password" id="register-password" placeholder="Contraseña" required>
+      <button type="submit">Registrarse</button>
+    </form>
+
+    <form id="login-form" style="display: none;">
+      <input type="email" id="login-email" placeholder="Correo electrónico" required>
+      <input type="password" id="login-password" placeholder="Contraseña" required>
+      <button type="submit">Iniciar Sesión</button>
+    </form>
+
+    <p id="switch-form">
+      ¿Ya tienes cuenta? <a href="#" id="toggle-login">Inicia sesión aquí</a>
+    </p>
+    <p id="message"></p>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js"></script>
+  <script src="app.js" type="module"></script>
+</body>
+</html>
