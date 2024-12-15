@@ -33,28 +33,35 @@
       padding: 20px;
     }
 
-    /* Logo y Skip */
+    /* Header, Skip */
     .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 30px;
+      position: absolute;
+      top: 20px;
+      width: 100%;
+      text-align: center;
     }
 
-    .header .logo {
-      font-size: 1.5em;
-      font-weight: bold;
-    }
-
-    .header .skip {
-      font-size: 0.9em;
-      color: #aaa;
-      text-decoration: none;
+.skip {
+  font-size: 0.9em;
+  color: #aaa;
+  text-decoration: none;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+}
+    /* Logo de imagen */
+    .logo-img {
+      width: 200px; /* Tamaño ajustable */
+      height: auto; /* Mantener proporciones */
+      margin: 0 auto;
+      display: block; /* Para que sea un bloque centrado */
+      margin-top: -90px; /* Espaciado superior */
+      margin-block:30px;
     }
 
     /* Títulos */
     h1 {
-      font-family:'Segoe UI';
+      font-family: 'Segoe UI';
       font-size: 1.8em;
       margin: 0;
     }
@@ -168,9 +175,11 @@
   <div class="container">
     <!-- Header -->
     <div class="header">
-      <div class="logo">Chequin</div>
       <a href="#" class="skip" id="skip">Skip</a>
     </div>
+
+    <!-- Logo -->
+    <img src="logo/l.jpg" alt="Logo" class="logo-img"> <!-- Cambiar por la URL o ruta de tu logo -->
 
     <!-- Títulos -->
     <h1 id="form-title">Registro</h1>
