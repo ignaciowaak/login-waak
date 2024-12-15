@@ -41,14 +41,15 @@
       text-align: center;
     }
 
-.skip {
-  font-size: 0.9em;
-  color: #aaa;
-  text-decoration: none;
-  position: fixed;
-  top: 10px;
-  right: 10px;
-}
+    .skip {
+      font-size: 0.9em;
+      color: #aaa;
+      text-decoration: none;
+      position: fixed;
+      top: 10px;
+      right: 10px;
+    }
+
     /* Logo de imagen */
     .logo-img {
       width: 200px; /* Tamaño ajustable */
@@ -56,7 +57,7 @@
       margin: 0 auto;
       display: block; /* Para que sea un bloque centrado */
       margin-top: -90px; /* Espaciado superior */
-      margin-block:30px;
+      margin-block: 30px;
     }
 
     /* Títulos */
@@ -179,24 +180,24 @@
     </div>
 
     <!-- Logo -->
-    <img src="logo/l.jpg" alt="Logo" class="logo-img"> <!-- Cambiar por la URL o ruta de tu logo -->
+    <img src="logo/l.jpg" alt="Logo" class="logo-img">
 
     <!-- Títulos -->
     <h1 id="form-title">Registro</h1>
-    <p>Si no tenes tu cuenta resgristrate</p>
+    <p>Si no tienes tu cuenta, regístrate</p>
 
     <!-- Formulario de registro -->
     <form id="register-form">
       <input type="email" placeholder="Email" id="register-email" required>
       <input type="password" placeholder="Password" id="register-password" required>
-      <button type="submit" class="btn">Register</button>
+      <button type="submit" class="btn">Registrarse</button>
     </form>
 
     <!-- Formulario de login -->
     <form id="login-form" style="display: none;">
       <input type="email" placeholder="Email" id="login-email" required>
       <input type="password" placeholder="Password" id="login-password" required>
-      <button type="submit" class="btn">Login</button>
+      <button type="submit" class="btn">Iniciar sesión</button>
     </form>
 
     <!-- Mensaje de error/success -->
@@ -206,20 +207,20 @@
     <a href="#" id="toggle-login">¿Ya tienes cuenta? Inicia sesión aquí</a>
 
     <!-- Separador -->
-    <div class="divider"><span>or</span></div>
+    <div class="divider"><span>o</span></div>
 
     <!-- Botones externos -->
     <button class="btn-secondary" id="apple-login">
-      <i class="fab fa-apple"></i> Sign In With Apple
+      <i class="fab fa-apple"></i> Iniciar sesión con Apple
     </button>
 
     <button class="btn-secondary" id="phone-login">
-      <i class="fas fa-phone"></i> Sign In With Phone
+      <i class="fas fa-phone"></i> Iniciar sesión con teléfono
     </button>
 
     <!-- Footer -->
     <div class="footer">
-      <p>Don't have an account? <a href="#" id="register-link">Sign up</a></p>
+      <p>¿No tienes cuenta? <a href="#" id="register-link">Regístrate</a></p>
     </div>
   </div>
 
@@ -280,6 +281,9 @@
           registerForm.style.display = "none";
           loginForm.style.display = "block";
           formTitle.textContent = "Iniciar Sesión";
+          setTimeout(() => {
+            window.location.href = redirectUrl;
+          }, 1500);
         })
         .catch((error) => {
           message.innerText = `Error: ${error.message}`;
