@@ -3,10 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login con Firebase</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Login Responsivo</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    /* Estilo general en blanco y negro */
+    /* Estilo general */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
       font-family: Arial, sans-serif;
       background-color: #000;
@@ -16,53 +22,135 @@
       align-items: center;
       height: 100vh;
       margin: 0;
+      overflow: hidden;
     }
 
+    /* Contenedor principal */
     .container {
       text-align: center;
-      background: #111;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
       width: 100%;
       max-width: 400px;
+      padding: 20px;
     }
 
-    form {
-      margin-bottom: 20px;
+    /* Logo y Skip */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
     }
 
+    .header .logo {
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+
+    .header .skip {
+      font-size: 0.9em;
+      color: #aaa;
+      text-decoration: none;
+    }
+
+    /* Títulos */
+    h1 {
+      font-size: 1.8em;
+      margin: 0;
+    }
+
+    p {
+      font-size: 0.9em;
+      color: #aaa;
+      margin: 10px 0 20px;
+    }
+
+    /* Campos de formulario */
     input {
-      display: block;
       width: 100%;
-      margin-bottom: 10px;
-      padding: 10px;
-      border: 1px solid #555;
-      border-radius: 5px;
+      padding: 12px;
+      margin-bottom: 15px;
       background-color: #222;
+      border: none;
       color: #fff;
+      border-radius: 10px;
+      font-size: 1em;
+      outline: none;
     }
 
     input::placeholder {
       color: #aaa;
     }
 
-    button {
-      padding: 10px 20px;
-      background-color: #444;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
+    /* Botón principal */
+    .btn {
       width: 100%;
+      padding: 12px;
+      background-color: #fff;
+      color: #000;
+      font-weight: bold;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 1em;
+      margin-bottom: 15px;
     }
 
-    button:hover {
-      background-color: #666;
+    .btn:hover {
+      background-color: #ddd;
     }
 
+    /* Separador */
+    .divider {
+      position: relative;
+      text-align: center;
+      margin: 15px 0;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: "";
+      display: inline-block;
+      width: 40%;
+      height: 1px;
+      background-color: #444;
+      position: relative;
+      top: 8px;
+    }
+
+    .divider span {
+      font-size: 0.9em;
+      color: #aaa;
+      margin: 0 10px;
+    }
+
+    /* Botones externos */
+    .btn-secondary {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 14px;
+      margin-top: 10px;
+      background-color: #222;
+      color: #fff;
+      border-radius: 25px;
+      font-size: 1em;
+      cursor: pointer;
+      border: 1px solid #333;
+    }
+
+    .btn-secondary i {
+      margin-right: 10px;
+    }
+
+    .btn-secondary:hover {
+      background-color: #444;
+    }
+
+    /* Mensajes adicionales */
     a {
-      color: #007bff;
+      color: #aaa;
+      font-size: 0.9em;
       text-decoration: none;
     }
 
@@ -70,34 +158,141 @@
       text-decoration: underline;
     }
 
-    #message {
-      color: red;
-      margin-top: 10px;
+    .footer {
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h2 id="form-title">Registro</h2>
-    <form id="register-form" style="display: block;">
-      <input type="email" id="register-email" placeholder="Correo electrónico" required>
-      <input type="password" id="register-password" placeholder="Contraseña" required>
-      <button type="submit">Registrarse</button>
+    <!-- Header -->
+    <div class="header">
+      <div class="logo">Opal</div>
+      <a href="#" class="skip" id="skip">Skip</a>
+    </div>
+
+    <!-- Títulos -->
+    <h1 id="form-title">Registro</h1>
+    <p>Let's get you in to Opal</p>
+
+    <!-- Formulario de registro -->
+    <form id="register-form">
+      <input type="email" placeholder="Email" id="register-email" required>
+      <input type="password" placeholder="Password" id="register-password" required>
+      <button type="submit" class="btn">Register</button>
     </form>
 
+    <!-- Formulario de login -->
     <form id="login-form" style="display: none;">
-      <input type="email" id="login-email" placeholder="Correo electrónico" required>
-      <input type="password" id="login-password" placeholder="Contraseña" required>
-      <button type="submit">Iniciar Sesión</button>
+      <input type="email" placeholder="Email" id="login-email" required>
+      <input type="password" placeholder="Password" id="login-password" required>
+      <button type="submit" class="btn">Login</button>
     </form>
 
-    <p id="switch-form">
-      ¿Ya tienes cuenta? <a href="#" id="toggle-login">Inicia sesión aquí</a>
-    </p>
-    <p id="message"></p>
+    <!-- Mensaje de error/success -->
+    <div id="message"></div>
+
+    <!-- Link para cambiar entre formularios -->
+    <a href="#" id="toggle-login">¿Ya tienes cuenta? Inicia sesión aquí</a>
+
+    <!-- Separador -->
+    <div class="divider"><span>or</span></div>
+
+    <!-- Botones externos -->
+    <button class="btn-secondary" id="apple-login">
+      <i class="fab fa-apple"></i> Sign In With Apple
+    </button>
+
+    <button class="btn-secondary" id="phone-login">
+      <i class="fas fa-phone"></i> Sign In With Phone
+    </button>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p>Don't have an account? <a href="#" id="register-link">Sign up</a></p>
+    </div>
   </div>
 
-  <script src="https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js"></script>
-  <script src="app.js" type="module"></script>
+  <!-- Firebase y JS -->
+  <script type="module">
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+
+    // Configuración de Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyDMK_0Wp87yqviKemYiN3KHpc2Nic1yZWs",
+      authDomain: "playlist-f836a.firebaseapp.com",
+      projectId: "playlist-f836a",
+      storageBucket: "playlist-f836a.firebasestorage.app",
+      messagingSenderId: "301875991366",
+      appId: "1:301875991366:web:ee46defa63138576120b47",
+      measurementId: "G-W9SM4SD0P7"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    // Elementos del DOM
+    const registerForm = document.getElementById("register-form");
+    const loginForm = document.getElementById("login-form");
+    const toggleLogin = document.getElementById("toggle-login");
+    const message = document.getElementById("message");
+    const formTitle = document.getElementById("form-title");
+
+    // URL de redirección tras inicio de sesión exitoso
+    const redirectUrl = "https://litmatchnudes.netlify.app";
+
+    // Cambiar entre formularios
+    toggleLogin.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (registerForm.style.display === "block") {
+        registerForm.style.display = "none";
+        loginForm.style.display = "block";
+        formTitle.textContent = "Iniciar Sesión";
+        toggleLogin.textContent = "¿No tienes cuenta? Regístrate aquí";
+      } else {
+        registerForm.style.display = "block";
+        loginForm.style.display = "none";
+        formTitle.textContent = "Registro";
+        toggleLogin.textContent = "¿Ya tienes cuenta? Inicia sesión aquí";
+      }
+    });
+
+    // Registro de usuarios
+    registerForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const email = document.getElementById("register-email").value;
+      const password = document.getElementById("register-password").value;
+
+      createUserWithEmailAndPassword(auth, email, password)
+        .then(() => {
+          message.innerText = "Registro exitoso. Ahora inicia sesión.";
+          registerForm.style.display = "none";
+          loginForm.style.display = "block";
+          formTitle.textContent = "Iniciar Sesión";
+        })
+        .catch((error) => {
+          message.innerText = `Error: ${error.message}`;
+        });
+    });
+
+    // Inicio de sesión
+    loginForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const email = document.getElementById("login-email").value;
+      const password = document.getElementById("login-password").value;
+
+      signInWithEmailAndPassword(auth, email, password)
+        .then(() => {
+          message.innerText = "Inicio de sesión exitoso. Redirigiendo...";
+          setTimeout(() => {
+            window.location.href = redirectUrl;
+          }, 1500);
+        })
+        .catch((error) => {
+          message.innerText = `Error: ${error.message}`;
+        });
+    });
+  </script>
 </body>
 </html>
